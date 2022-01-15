@@ -24,6 +24,11 @@
       "id": 3,
       "name": "Gogi",
       "email": "Sincere@april.biz"
+    },
+    {
+      "name": "new user",
+      "email": "email",
+      "id": 7
     }
   ]
 }

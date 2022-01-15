@@ -18,11 +18,18 @@ const usersApi = createApi({
                 body: user
             }),
             invalidatesTags: result => ['userList']
-        })
-
+        }),
+        remove: builer.mutation({
+            query: (id:number) =>
+            ({
+                url: 'users/' + id,
+                method: 'DELETE',
+            }),
+            invalidatesTags: result => ['userList']
+        }),
     })
 })
 
-export const { useGetUsersQuery, useCreateNewMutation } = usersApi;  // auto generated hooks
+export const { useGetUsersQuery, useCreateNewMutation, useRemoveMutation } = usersApi;  // auto generated hooks
 
 export default usersApi;
