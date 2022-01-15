@@ -1,17 +1,28 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { IUser } from '../store/models/IUser';
 
-const  usersApi = createApi({
+const usersApi = createApi({
     reducerPath: 'usersApi',
-    baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8000'}),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000' }),
+    tagTypes: ['userList'],
     endpoints: (builer) => ({
         getUsers: builer.query<IUser[], any>({
-            query:() => '/users'
+            query: () => '/users',
+            providesTags: result => ['userList']
+        }),
+        createNew: builer.mutation({
+            query: (user) =>
+            ({
+                url: 'users',
+                method: 'POST',
+                body: user
+            }),
+            invalidatesTags: result => ['userList']
         })
 
     })
 })
 
-export const { useGetUsersQuery } = usersApi;  // auto generated hooks
+export const { useGetUsersQuery, useCreateNewMutation } = usersApi;  // auto generated hooks
 
 export default usersApi;
