@@ -1,10 +1,14 @@
 
-function App() {
-  return (
-    <div>
-      fdsdfsdfdsf
-    </div>
-  );
-}
+// to start use npm run dev
 
-export default App;
+import TabBar from "./components/TabBar";
+
+export default function App() {
+
+	
+	return (
+		<div className="App">
+			<TabBar />
+		</div>
+	);
+}
