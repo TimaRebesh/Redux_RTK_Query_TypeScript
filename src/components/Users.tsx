@@ -1,13 +1,17 @@
 import { useState } from 'react';
+import { useGetUsersQuery } from '../services/usersApi';
 import Preloader from "./Preloader";
 
 export default function Users() {
 
-    const [edit, setEdit] = useState(null);
-    const users: any[] = []
+    const { data:users = [], isLoading, isSuccess, isError, error } = useGetUsersQuery('')
+
+    const [edit, setEdit] = useState(0);
 
     return (
         <div className='block'>
+            {isLoading && <Preloader/>}
+            {isError && <h2>{error}</h2>}
             {users.length > 0 &&
                 users.map(user => (
                     <div className='user' key={user.id}>

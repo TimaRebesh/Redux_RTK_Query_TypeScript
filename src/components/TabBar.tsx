@@ -3,9 +3,9 @@ import { changeTab } from '../store/reducers/tabbarSlice';
 
 export default function TabBar() {
 
-    const  { tabNumber  } = useAppSelector(state => state.tabbarReducer)
+    const { tabNumber } = useAppSelector(state => state.tabbar)
     const dispatch = useAppDispatch();
-    
+
     const tabs = [
         { id: 1, text: 'Users' },
         { id: 2, text: 'Comments' },

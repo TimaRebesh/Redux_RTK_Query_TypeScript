@@ -1,3 +1,61 @@
+.App {
+    text-align: center;
+}
+
+.block {
+    flex-direction: column;
+    display: inline-flex;
+}
+
+.user {
+    border: 1px solid gray;
+    width: 500px;
+    padding: 10px;
+    margin: 10px;
+    text-align: left;
+    position: relative;
+}
+
+.field {
+    margin: 5px 0;
+}
+
+.edit_remove {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+}
+
+.label {
+    color: rgb(97, 174, 219);
+}
+
+.input_text {
+    margin: 10px;
+}
+
+.comments {
+    margin: 10px;
+}
+
+.date {
+    color: rgb(13, 171, 219);
+    font-size: 11px;
+    margin-right: 10px;
+}
+
+.remove {
+    margin-left: 15px;
+    color: red;
+    cursor: pointer;
+}
+
+.edit {
+    margin-left: 15px;
+    color: rgb(0, 132, 172);
+    cursor: pointer;
+}
+
 .tab-bar {
     display: flex;
 }
@@ -18,10 +76,10 @@
 }
 
 .preloader {
-    display: flex;
+    position: relative;
 }
 
 .preloader-content {
     position: absolute;
-    margin: 10% 48%;
+    margin: 20% 48%;
 }
