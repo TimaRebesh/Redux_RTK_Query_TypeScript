@@ -3,7 +3,7 @@ import { IUser } from '../store/models/IUser';
 
 const usersApi = createApi({
     reducerPath: 'usersApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8000' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8150' }),
     tagTypes: ['userList'],
     endpoints: (builer) => ({
         getUsers: builer.query<IUser[], any>({

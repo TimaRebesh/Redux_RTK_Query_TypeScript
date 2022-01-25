@@ -21,9 +21,9 @@
     "typescript": "~4.1.5"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "set PORT=3150 && react-scripts start",
     "dev": "concurrently \"npm run server\" \"npm run start\"",
-    "server": "json-server -w server/dataBase.json -p 8000",
+    "server": "json-server -w server/dataBase.json -p 8150",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
