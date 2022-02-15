@@ -9,6 +9,7 @@ export default function TabBar() {
     const tabs = [
         { id: 1, text: 'Users' },
         { id: 2, text: 'Comments' },
+        { id: 3, text: 'Other possibilitis' },
     ]
 
     return (

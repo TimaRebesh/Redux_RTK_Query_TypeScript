@@ -4,7 +4,7 @@ import Preloader from "./Preloader";
 
 export default function Users() {
 
-    const { data: users = [], isLoading, isSuccess, isError, error } = useGetUsersQuery('');
+    const { data: users = [], isLoading, isSuccess, isError, error } = useGetUsersQuery();
     const [createNew, createNewStatus] = useCreateNewMutation();
     const [remove, removeStatus] = useRemoveMutation();
 
@@ -14,7 +14,7 @@ export default function Users() {
         await createNew({ name: 'new user', email: 'email' }).unwrap
     }
 
-    const removeUser = async (id:number) => {
+    const removeUser = async (id: number) => {
         await remove(id)
     }
 
@@ -48,6 +48,16 @@ type FieldProps = {
 }
 
 function Field({ label, value }: FieldProps) {
+    const { firstUser } = useGetUsersQuery(undefined, {
+        selectFromResult: ({ data }) => {
+            if (data)
+                return {
+                    firstUser: data[0]
+                }
+            return { firstUser: undefined }
+        }
+    });
+    console.log(firstUser)
     return (
         <div className='field'>
             { }

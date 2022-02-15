@@ -6,7 +6,7 @@ const usersApi = createApi({
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:8150' }),
     tagTypes: ['userList'],
     endpoints: (builer) => ({
-        getUsers: builer.query<IUser[], any>({
+        getUsers: builer.query<IUser[], void>({
             query: () => '/users',
             providesTags: result => ['userList']
         }),
