@@ -10,7 +10,7 @@ export const rootReducer = combineReducers({
 
 })
 
-export const setupStore = () => {
+export const setUpStore = () => {
     return configureStore({
         reducer: rootReducer,
         middleware: (getDefaultMiddleware) => getDefaultMiddleware()
@@ -18,6 +18,8 @@ export const setupStore = () => {
     })
 }
 
+export const store = setUpStore();
+
 export type RootState = ReturnType<typeof rootReducer>
-export type AppStore = ReturnType<typeof setupStore>
+export type AppStore = ReturnType<typeof setUpStore>
 export type AppDispatch = AppStore['dispatch']

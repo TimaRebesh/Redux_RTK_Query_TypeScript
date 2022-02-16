@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAppDispatch } from "../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import commentsApi, { useCreateNewMutation, useGetCommentsQuery, useRemoveMutation } from "../services/commentsApi";
 
 export default function Comments() {
@@ -9,24 +9,28 @@ export default function Comments() {
     const [createNew] = useCreateNewMutation();
     const [removeComment] = useRemoveMutation();
     const dispatch = useAppDispatch();
+    const state = useAppSelector(state => state);
 
     const [inputVal, setInputVal] = useState('');
 
     const createNewComment = async () => {
         if (inputVal) {
-            await createNew(inputVal)
             setInputVal('');
+            await createNew(inputVal)
         }
     }
 
     const removeFirst = async () => {
-        const result = dispatch(commentsApi.endpoints.getComments.initiate(1));
-        result.unwrap()
-            .then(data => {
-                removeComment(data[0].id);
-            })
-            .catch(e => console.log(e));
-        result.unsubscribe();
+        // const result = dispatch(commentsApi.endpoints.getComments.initiate(1));         // with subscription
+        // result.unwrap()
+        //     .then(data => {
+        //         removeComment(data[0].id);
+        //     })
+        //     .catch(e => console.log(e));
+        // result.unsubscribe();
+        const result = commentsApi.endpoints.getComments.select(1)(state as any)  // without subscription
+        const { data, status, error } = result;
+        data && removeComment(data[0].id);
     }
 
     return (
